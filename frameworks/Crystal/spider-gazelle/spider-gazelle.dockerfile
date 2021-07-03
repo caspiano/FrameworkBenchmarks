@@ -1,7 +1,13 @@
-FROM crystallang/crystal:0.27.0
+FROM crystallang/crystal:1.0.0
+
 WORKDIR /usr/src/app
 
 COPY shard.yml ./
+COPY shard.lock ./
+
+# Install shards
+RUN shards install --production
+
 COPY src src
 
 # Build App

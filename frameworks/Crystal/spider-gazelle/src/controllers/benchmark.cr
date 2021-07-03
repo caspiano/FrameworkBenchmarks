@@ -55,7 +55,7 @@ class Benchmark < Application
 
   # Postgres Test 4: Fortunes
   FORTUNE_MESSAGE = "Additional fortune added at request time."
-  FORTUNE_CTYPE = "text/html; charset=UTF-8"
+  FORTUNE_CTYPE   = "text/html; charset=UTF-8"
 
   get "/fortunes", :fortunes do
     fortune = Fortune.new
@@ -64,7 +64,7 @@ class Benchmark < Application
 
     fortunes = Fortune.all
     fortunes << fortune
-    fortunes.sort_by! { |fortune| fortune.message || "" }
+    fortunes.sort_by! { |f| f.message || "" }
 
     # by default this would have been returned as text/html
     response.content_type = FORTUNE_CTYPE
